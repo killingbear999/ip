@@ -4,22 +4,26 @@ public class Duke {
     public static void main(String[] args) {
         start();
 
-        String userCommand;
         String exitKeyword = "bye";
-        boolean checkExitKeyword = false;
-        Scanner userInput = new Scanner(System.in);
-        userCommand = userInput.nextLine();
+        String[] list = new String[100];
+        String listDisplay = "list";
+        int commandCount = 0;
 
-        do {
-            if (userCommand.equals(exitKeyword) == true) {
+        Scanner userInput = new Scanner(System.in);
+
+        while (true) {
+            String userCommand = userInput.nextLine();
+            if (userCommand.equals(exitKeyword)) {
                 exit();
-                checkExitKeyword = true;
                 break;
+            } else if (userCommand.equals(listDisplay)) {
+                printList(list, commandCount);
             } else {
-                response(userCommand);
-                userCommand = userInput.nextLine();
+                echo(userCommand);
+                store(list, userCommand, commandCount);
+                commandCount = commandCount + 1;
             }
-        } while (checkExitKeyword == false);
+        }
     }
 
     public static void start() {
@@ -41,7 +45,17 @@ public class Duke {
         System.out.println("Bye. Hope to see you again soon!");
     }
 
-    public static void response(String userCommand) {
-        System.out.println(userCommand);
+    public static void echo(String userCommand) {
+        System.out.println("added: " + userCommand);
+    }
+
+    public static void store(String[] list, String userCommand, int commandCount) {
+        list[commandCount] = userCommand;
+    }
+
+    public static void printList(String[] list, int commandCount) {
+        for (int i = 1; i <= commandCount; i++) {
+            System.out.println(i + ". " + list[i-1]);
+        }
     }
 }
