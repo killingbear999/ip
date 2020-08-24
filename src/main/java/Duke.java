@@ -5,9 +5,8 @@ public class Duke {
         start();
 
         String exitKeyword = "bye";
-        String[] list = new String[100];
-        String listDisplay = "list";
-        int commandCount = 0;
+        String listDisplayKeyword = "list";
+        String statusKeyword = "done";
 
         Scanner userInput = new Scanner(System.in);
 
@@ -16,12 +15,16 @@ public class Duke {
             if (userCommand.equals(exitKeyword)) {
                 exit();
                 break;
-            } else if (userCommand.equals(listDisplay)) {
-                printList(list, commandCount);
             } else {
-                echo(userCommand);
-                store(list, userCommand, commandCount);
-                commandCount = commandCount + 1;
+                Task t = new Task(userCommand);
+                if (userCommand.equals(listDisplayKeyword)) {
+                    t.printList();
+                } else if (userCommand.startsWith(statusKeyword)) {
+                    t.markAsDone();
+                } else {
+                    t.echo();
+                    t.store();
+                }
             }
         }
     }
@@ -43,19 +46,5 @@ public class Duke {
 
     public static void exit() {
         System.out.println("Bye. Hope to see you again soon!");
-    }
-
-    public static void echo(String userCommand) {
-        System.out.println("added: " + userCommand);
-    }
-
-    public static void store(String[] list, String userCommand, int commandCount) {
-        list[commandCount] = userCommand;
-    }
-
-    public static void printList(String[] list, int commandCount) {
-        for (int i = 1; i <= commandCount; i++) {
-            System.out.println(i + ". " + list[i-1]);
-        }
     }
 }
