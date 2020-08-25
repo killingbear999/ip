@@ -13,7 +13,7 @@ public class Task {
 		return (isDone ? "\u2713" : "\u2718");
 	}
 
-	public void store() {
+	public void storeCommand() {
 		list[commandCount] = "[" + getStatusIcon() + "] " + description;
 		commandCount = commandCount + 1;
 	}
@@ -21,11 +21,11 @@ public class Task {
 	public void printList() {
 		System.out.println("Here are the tasks in your list:");
 		for (int i = 1; i <= commandCount; i++) {
-			System.out.println(i + "." + list[i-1]);
+			System.out.println(i + "." + list[i - 1]);
 		}
 	}
 
-	public void echo() {
+	public void echoCommand() {
 		System.out.println("added: " + description);
 	}
 

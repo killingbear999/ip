@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Duke {
     public static void main(String[] args) {
-        start();
+        startChat();
 
         String exitKeyword = "bye";
         String listDisplayKeyword = "list";
@@ -13,38 +13,38 @@ public class Duke {
         while (true) {
             String userCommand = userInput.nextLine();
             if (userCommand.equals(exitKeyword)) {
-                exit();
+                exitChat();
                 break;
             } else {
-                Task t = new Task(userCommand);
+                Task command = new Task(userCommand);
                 if (userCommand.equals(listDisplayKeyword)) {
-                    t.printList();
+                    command.printList();
                 } else if (userCommand.startsWith(statusKeyword)) {
-                    t.markAsDone();
+                    command.markAsDone();
                 } else {
-                    t.echo();
-                    t.store();
+                    command.echoCommand();
+                    command.storeCommand();
                 }
             }
         }
     }
 
-    public static void start() {
+    public static void startChat() {
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
                 + "| | | | | | | |/ / _ \\\n"
                 + "| |_| | |_| |   <  __/\n"
                 + "|____/ \\__,_|_|\\_\\___|\n";
         System.out.println("Hello from\n" + logo);
-        greet();
+        greetUser();
     }
 
-    public static void greet() {
+    public static void greetUser() {
         System.out.println("Hello! I'm Duke");
         System.out.println("What can I do for you?");
     }
 
-    public static void exit() {
+    public static void exitChat() {
         System.out.println("Bye. Hope to see you again soon!");
     }
 }
