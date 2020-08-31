@@ -22,8 +22,8 @@ public class Duke {
                 } else if (userCommand.startsWith(statusKeyword)) {
                     command.markAsDone();
                 } else {
-                    command.echoCommand();
                     command.storeCommand();
+                    command.echoCommand();
                 }
             }
         }
