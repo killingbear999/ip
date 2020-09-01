@@ -2,7 +2,7 @@ public class Task {
 	protected String description;
 	protected boolean isDone;
 	public static final int MAX_STRING_SIZE = 100;
-	private static final String[] list = new String[MAX_STRING_SIZE];
+	private static final String[] lists = new String[MAX_STRING_SIZE];
 	private static int commandCount = 0;
 	private static int taskFinished = 0;
 	private static String taskDone;
@@ -43,19 +43,19 @@ public class Task {
 
 	public void storeEvent() {
 		Event e = new Event(description, commandCount);
-		list[commandCount] = e.storeObject(description, commandCount);
+		lists[commandCount] = e.storeObject(description, commandCount);
 		commandCount = commandCount + 1;
 	}
 
 	public void storeTodo() {
 		Todo t = new Todo(description, commandCount);
-		list[commandCount] = t.storeObject(description, commandCount);
+		lists[commandCount] = t.storeObject(description, commandCount);
 		commandCount = commandCount + 1;
 	}
 
 	public void storeDeadline() {
 		Deadline d = new Deadline(description, commandCount);
-		list[commandCount] = d.storeObject(description, commandCount);
+		lists[commandCount] = d.storeObject(description, commandCount);
 		commandCount = commandCount + 1;
 	}
 
@@ -73,7 +73,7 @@ public class Task {
 
 	public void printListMain() {
 		for (int i = 1; i <= commandCount; i++) {
-			System.out.println(i + "." + list[i - 1]);
+			System.out.println(i + "." + lists[i - 1]);
 		}
 	}
 
@@ -87,7 +87,7 @@ public class Task {
 
 	public void echoCommandMain() {
 		System.out.println("Got it. I've added this task:");
-		System.out.println("  " + list[commandCount-1]);
+		System.out.println("  " + lists[commandCount-1]);
 	}
 
 	public void echoCommandEnding() {
@@ -104,23 +104,23 @@ public class Task {
 
 	public void traceTaskDone() {
 		List l = new List(description, commandCount);
-		taskDone = l.traceTask(description, list);
+		taskDone = l.traceTask(description, lists);
 		taskFinished = l.returnTaskFinished();
 		isDone = true;
 	}
 
 	public void finishTask(String taskDone, int taskFinished) {
-		if (list[taskFinished].contains("[T]")) {
-			list[taskFinished] = "[T][" + getStatusIcon() + "] " + taskDone;
-		} else if (list[taskFinished].contains("[D]")) {
-			list[taskFinished] = "[D][" + getStatusIcon() + "] " + taskDone;
-		} else if (list[taskFinished].contains("[E]")) {
-			list[taskFinished] = "[E][" + getStatusIcon() + "] " + taskDone;
+		if (lists[taskFinished].contains("[T]")) {
+			lists[taskFinished] = "[T][" + getStatusIcon() + "] " + taskDone;
+		} else if (lists[taskFinished].contains("[D]")) {
+			lists[taskFinished] = "[D][" + getStatusIcon() + "] " + taskDone;
+		} else if (lists[taskFinished].contains("[E]")) {
+			lists[taskFinished] = "[E][" + getStatusIcon() + "] " + taskDone;
 		}
 	}
 
 	public void printTaskDone() {
 		System.out.println("Nice! I've marked this task as done:");
-		System.out.println("  " + list[taskFinished]);
+		System.out.println("  " + lists[taskFinished]);
 	}
 }

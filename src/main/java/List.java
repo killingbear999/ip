@@ -12,12 +12,12 @@ public class List {
         return null;
     }
 
-    public String traceTask(String description, String[] list) {
-        String[] taskTracer = description.split(" ");
-        taskFinished = Integer.parseInt(taskTracer[1]) - 1;
-        int taskPosition = list[taskFinished].indexOf(" ", 1) + 1;
-        int taskLength = list[taskFinished].length();
-        String taskDone = list[taskFinished].substring(taskPosition, taskLength);
+    public String traceTask(String description, String[] lists) {
+        String[] taskTracers = description.split(" ");
+        taskFinished = Integer.parseInt(taskTracers[1]) - 1;
+        int taskPosition = lists[taskFinished].indexOf(" ", 1) + 1;
+        int taskLength = lists[taskFinished].length();
+        String taskDone = lists[taskFinished].substring(taskPosition, taskLength);
         return taskDone;
     }
 
