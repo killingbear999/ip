@@ -2,7 +2,7 @@ public class Task {
 	protected String description;
 	protected boolean isDone;
 	public static final int MAX_STRING_SIZE = 100;
-	private static final String[] lists = new String[MAX_STRING_SIZE];
+	public static String[] lists = new String[MAX_STRING_SIZE];
 	private static int commandCount = 0;
 	private static int taskFinished = 0;
 	private static String taskDone;
