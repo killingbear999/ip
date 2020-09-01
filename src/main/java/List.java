@@ -15,8 +15,9 @@ public class List {
     public String traceTask(String description, String[] list) {
         String[] taskTracer = description.split(" ");
         taskFinished = Integer.parseInt(taskTracer[1]) - 1;
-        String taskDone = list[taskFinished].substring(list[taskFinished].indexOf(" ", 1) + 1,
-                list[taskFinished].length());
+        int taskPosition = list[taskFinished].indexOf(" ", 1) + 1;
+        int taskLength = list[taskFinished].length();
+        String taskDone = list[taskFinished].substring(taskPosition, taskLength);
         return taskDone;
     }
 

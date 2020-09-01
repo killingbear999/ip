@@ -6,11 +6,9 @@ public class Todo extends List {
 
     @Override
     public String storeObject(String description, int commandCount) {
-        String object = description.substring(description.indexOf(" ", 1) + 1);
-        return "[T][" + "\u2718" + "] " + object;
-    }
-
-    public int returnCommandCount() {
-        return commandCount;
+        int toDoPosition = description.indexOf(" ", 1) + 1;
+        String taskName = description.substring(toDoPosition);
+        String stringReturn =  "[T][" + "\u2718" + "] " + taskName;
+        return stringReturn;
     }
 }

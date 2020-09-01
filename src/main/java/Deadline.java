@@ -6,9 +6,12 @@ public class Deadline extends List {
 
     @Override
     public String storeObject(String description, int commandCount) {
-        String object = description.substring(description.indexOf(" ", 1) + 1,
-                description.indexOf("/") - 1);
-        String deadline = description.substring(description.indexOf("by") + 3);
-        return "[D][" + "\u2718" + "] " + object + " (by: " + deadline + ")";
+        int firstBlankSpacePosition = description.indexOf(" ", 1) + 1;
+        int endingPosition = description.indexOf("/") - 1;
+        int deadlinePosition = description.indexOf("by") + 3;
+        String taskName = description.substring(firstBlankSpacePosition, endingPosition);
+        String deadline = description.substring(deadlinePosition);
+        String stringReturn =  "[D][" + "\u2718" + "] " + taskName + " (by: " + deadline + ")";
+        return stringReturn;
     }
 }

@@ -5,6 +5,7 @@ public class Task {
 	private static final String[] list = new String[MAX_STRING_SIZE];
 	private static int commandCount = 0;
 	private static int taskFinished = 0;
+	private static String taskDone;
 	protected String deadlineKeyword = "deadline";
 	protected String actionKeyword = "todo";
 	protected String eventKeyword = "event";
@@ -12,10 +13,6 @@ public class Task {
 	public Task(String description) {
 		this.description = description;
 		this.isDone = false;
-	}
-
-	public String getStatusIcon() {
-		return (isDone ? "\u2713" : "\u2718");
 	}
 
 	public void storeCommand() {
@@ -39,9 +36,7 @@ public class Task {
 	}
 
 	public void markAsDone() {
-		List l = new List(description, commandCount);
-		String taskDone = l.traceTask(description, list);
-		taskFinished = l.returnTaskFinished();
+		traceTaskDone();
 		finishTask(taskDone, taskFinished);
 		printTaskDone();
 	}
@@ -103,8 +98,18 @@ public class Task {
 		}
 	}
 
-	public void finishTask(String taskDone, int taskFinished) {
+	public String getStatusIcon() {
+		return (isDone ? "\u2713" : "\u2718");
+	}
+
+	public void traceTaskDone() {
+		List l = new List(description, commandCount);
+		taskDone = l.traceTask(description, list);
+		taskFinished = l.returnTaskFinished();
 		isDone = true;
+	}
+
+	public void finishTask(String taskDone, int taskFinished) {
 		if (list[taskFinished].contains("[T]")) {
 			list[taskFinished] = "[T][" + getStatusIcon() + "] " + taskDone;
 		} else if (list[taskFinished].contains("[D]")) {

@@ -6,9 +6,12 @@ public class Event extends List {
 
     @Override
     public String storeObject(String description, int commandCount) {
-        String object = description.substring(description.indexOf(" ", 1) + 1,
-                description.indexOf("/") - 1);
-        String deadline = description.substring(description.indexOf("at") + 3);
-        return "[E][" + "\u2718" + "] " + object + " (at: " + deadline + ")";
+        int firstBlankSpacePosition = description.indexOf(" ", 1) + 1;
+        int endingPosition = description.indexOf("/") - 1;
+        int timingPosition = description.indexOf("at") + 3;
+        String taskName = description.substring(firstBlankSpacePosition, endingPosition);
+        String eventTime = description.substring(timingPosition);
+        String stringReturn =  "[E][" + "\u2718" + "] " + taskName + " (at: " + eventTime + ")";
+        return stringReturn;
     }
 }

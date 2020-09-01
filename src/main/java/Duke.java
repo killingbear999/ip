@@ -16,16 +16,20 @@ public class Duke {
                 exitChat();
                 break;
             } else {
-                Task command = new Task(userCommand);
-                if (userCommand.equals(listDisplayKeyword)) {
-                    command.printList();
-                } else if (userCommand.startsWith(statusKeyword)) {
-                    command.markAsDone();
-                } else {
-                    command.storeCommand();
-                    command.echoCommand();
-                }
+                executeCommand(listDisplayKeyword, statusKeyword, userCommand);
             }
+        }
+    }
+
+    public static void executeCommand(String listDisplayKeyword, String statusKeyword, String userCommand) {
+        Task command = new Task(userCommand);
+        if (userCommand.equals(listDisplayKeyword)) {
+            command.printList();
+        } else if (userCommand.startsWith(statusKeyword)) {
+            command.markAsDone();
+        } else {
+            command.storeCommand();
+            command.echoCommand();
         }
     }
 
