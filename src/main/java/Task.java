@@ -90,9 +90,9 @@ public class Task {
 	public boolean checkStatus(String description) {
 		if (isAction() && description.length() < 5) {
 			return true;
-		} else if (isDeadline() && description.length() < 9) {
+		} else if (isDeadline() && (description.length() < 9 || !description.contains("/by"))) {
 			return true;
-		} else if (isEvent() && description.length() < 6) {
+		} else if (isEvent() && (description.length() < 6 || !description.contains("/at"))) {
 			return true;
 		}
 		return false;
