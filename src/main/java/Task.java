@@ -1,6 +1,8 @@
 public class Task {
 	protected String description;
 	protected boolean isDone;
+	protected boolean isCorrectInput;
+	protected boolean isEmptyTodo;
 	public static final int MAX_STRING_SIZE = 100;
 	public static String[] lists = new String[MAX_STRING_SIZE];
 	private static int commandCount = 0;
@@ -13,21 +15,33 @@ public class Task {
 	public Task(String description) {
 		this.description = description;
 		this.isDone = false;
+		this.isCorrectInput = true;
+		this.isEmptyTodo = false;
 	}
 
 	public void storeCommand() {
 		if (isDeadline()) {
 			storeDeadline();
 		} else if (isAction()) {
-			storeTodo();
+			isEmptyTodo = checkStatus(description);
+			if (!isEmptyTodo) {
+				storeTodo();
+			} else {
+				printErrorTodo();
+			}
 		} else if (isEvent()) {
 			storeEvent();
+		} else {
+			printErrorMessage();
+			isCorrectInput = false;
 		}
 	}
 
 	public void echoCommand() {
-		echoCommandMain();
-		echoCommandEnding();
+		if (isCorrectInput && !isEmptyTodo) {
+			echoCommandMain();
+			echoCommandEnding();
+		}
 	}
 
 	public void printList() {
@@ -42,20 +56,27 @@ public class Task {
 	}
 
 	public void storeEvent() {
-		Event e = new Event(description, commandCount);
-		lists[commandCount] = e.storeObject(description, commandCount);
+		Event e = new Event(description);
+		lists[commandCount] = e.storeObject(description);
 		commandCount = commandCount + 1;
 	}
 
+	public boolean checkStatus(String description) {
+		if (description.length() < 5) {
+			isEmptyTodo = true;
+		}
+		return isEmptyTodo;
+	}
+
 	public void storeTodo() {
-		Todo t = new Todo(description, commandCount);
-		lists[commandCount] = t.storeObject(description, commandCount);
+		Todo t = new Todo(description);
+		lists[commandCount] = t.storeObject(description);
 		commandCount = commandCount + 1;
 	}
 
 	public void storeDeadline() {
-		Deadline d = new Deadline(description, commandCount);
-		lists[commandCount] = d.storeObject(description, commandCount);
+		Deadline d = new Deadline(description);
+		lists[commandCount] = d.storeObject(description);
 		commandCount = commandCount + 1;
 	}
 
@@ -69,6 +90,14 @@ public class Task {
 
 	public boolean isEvent() {
 		return description.startsWith(eventKeyword);
+	}
+
+	public static void printErrorMessage() {
+		System.out.println("OOPS!!! I'm sorry, but I don't know what that means :-(");
+	}
+
+	public static void printErrorTodo() {
+		System.out.println("OOPS!!! The description of a todo cannot be empty.");
 	}
 
 	public void printListMain() {
@@ -103,7 +132,7 @@ public class Task {
 	}
 
 	public void traceTaskDone() {
-		List l = new List(description, commandCount);
+		List l = new List(description);
 		taskDone = l.traceTask(description, lists);
 		taskFinished = l.returnTaskFinished();
 		isDone = true;

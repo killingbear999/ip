@@ -1,11 +1,11 @@
 public class Deadline extends List {
 
-    public Deadline(String description, int commandCount) {
-        super(description, commandCount);
+    public Deadline(String description) {
+        super(description);
     }
 
     @Override
-    public String storeObject(String description, int commandCount) {
+    public String storeObject(String description) {
         int firstBlankSpacePosition = description.indexOf(" ", 1) + 1;
         int endingPosition = description.indexOf("/") - 1;
         int deadlinePosition = description.indexOf("by") + 3;

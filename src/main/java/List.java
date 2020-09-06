@@ -1,14 +1,12 @@
 public class List {
     protected String description;
-    protected int commandCount;
     public static int taskFinished;
 
-    public List(String description, int commandCount) {
+    public List(String description) {
         this.description = description;
-        this.commandCount = commandCount;
     }
 
-    public String storeObject(String description, int commandCount) {
+    public String storeObject(String description) {
         return null;
     }
 
