@@ -1,3 +1,13 @@
+package duke;
+
+import duke.exception.DeadlineException;
+import duke.exception.EventException;
+import duke.exception.TodoException;
+import duke.task.Deadline;
+import duke.task.Event;
+import duke.task.List;
+import duke.task.Todo;
+
 public class Task {
 	protected String description;
 	protected boolean isDone;

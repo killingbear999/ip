@@ -1,3 +1,5 @@
+package duke.task;
+
 public class List {
     protected String description;
     public static int taskFinished;

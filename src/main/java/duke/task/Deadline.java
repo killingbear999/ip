@@ -1,6 +1,8 @@
-public class Event extends List {
+package duke.task;
 
-    public Event(String description) {
+public class Deadline extends List {
+
+    public Deadline(String description) {
         super(description);
     }
 
@@ -8,10 +10,10 @@ public class Event extends List {
     public String storeObject(String description) {
         int firstBlankSpacePosition = description.indexOf(" ", 1) + 1;
         int endingPosition = description.indexOf("/") - 1;
-        int timingPosition = description.indexOf("at") + 3;
+        int deadlinePosition = description.indexOf("by") + 3;
         String taskName = description.substring(firstBlankSpacePosition, endingPosition);
-        String eventTime = description.substring(timingPosition);
-        String stringReturn =  "[E][" + "\u2718" + "] " + taskName + " (at: " + eventTime + ")";
+        String deadline = description.substring(deadlinePosition);
+        String stringReturn =  "[D][" + "\u2718" + "] " + taskName + " (by: " + deadline + ")";
         return stringReturn;
     }
 }
