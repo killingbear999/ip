@@ -25,42 +25,51 @@ public class Task {
 
 	public void storeCommand() {
 		if (isDeadline()) {
-			dealWithDeadline();
+			try {
+				dealWithDeadline();
+			} catch (DeadlineException e) {
+				printErrorMessage();
+			}
 		} else if (isAction()) {
-			dealWithTodo();
+			try {
+				dealWithTodo();
+			} catch (TodoException e) {
+				printErrorMessage();
+			}
 		} else if (isEvent()) {
-			dealWithEvent();
+			try {
+				dealWithEvent();
+			} catch (EventException e) {
+				printErrorMessage();
+			}
 		} else {
 			printErrorMessage();
 			isCorrectInput = false;
 		}
 	}
 
-	public void dealWithEvent() {
+	public void dealWithEvent() throws EventException {
 		isEmptyEvent = checkStatus(description);
-		if (!isEmptyEvent) {
-			storeEvent();
-		} else {
-			printErrorMessage();
+		if (isEmptyEvent) {
+			throw new EventException();
 		}
+		storeEvent();
 	}
 
-	public void dealWithDeadline() {
+	public void dealWithDeadline() throws DeadlineException {
 		isEmptyDeadline = checkStatus(description);
-		if (!isEmptyDeadline) {
-			storeDeadline();
-		} else {
-			printErrorMessage();
+		if (isEmptyDeadline) {
+			throw new DeadlineException();
 		}
+		storeDeadline();
 	}
 
-	public void dealWithTodo() {
+	public void dealWithTodo() throws TodoException {
 		isEmptyTodo = checkStatus(description);
-		if (!isEmptyTodo) {
-			storeTodo();
-		} else {
-			printErrorMessage();
+		if (isEmptyTodo) {
+			throw new TodoException();
 		}
+		storeTodo();
 	}
 
 	public void echoCommand() {
