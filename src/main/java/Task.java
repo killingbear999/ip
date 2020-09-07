@@ -1,6 +1,10 @@
 public class Task {
 	protected String description;
 	protected boolean isDone;
+	protected boolean isCorrectInput;
+	protected boolean isEmptyTodo;
+	protected boolean isEmptyDeadline;
+	protected boolean isEmptyEvent;
 	public static final int MAX_STRING_SIZE = 100;
 	public static String[] lists = new String[MAX_STRING_SIZE];
 	private static int commandCount = 0;
@@ -13,21 +17,57 @@ public class Task {
 	public Task(String description) {
 		this.description = description;
 		this.isDone = false;
+		this.isCorrectInput = true;
+		this.isEmptyTodo = false;
+		this.isEmptyDeadline = false;
+		this.isEmptyEvent = false;
 	}
 
 	public void storeCommand() {
 		if (isDeadline()) {
-			storeDeadline();
+			dealWithDeadline();
 		} else if (isAction()) {
-			storeTodo();
+			dealWithTodo();
 		} else if (isEvent()) {
+			dealWithEvent();
+		} else {
+			printErrorMessage();
+			isCorrectInput = false;
+		}
+	}
+
+	public void dealWithEvent() {
+		isEmptyEvent = checkStatus(description);
+		if (!isEmptyEvent) {
 			storeEvent();
+		} else {
+			printErrorMessage();
+		}
+	}
+
+	public void dealWithDeadline() {
+		isEmptyDeadline = checkStatus(description);
+		if (!isEmptyDeadline) {
+			storeDeadline();
+		} else {
+			printErrorMessage();
+		}
+	}
+
+	public void dealWithTodo() {
+		isEmptyTodo = checkStatus(description);
+		if (!isEmptyTodo) {
+			storeTodo();
+		} else {
+			printErrorMessage();
 		}
 	}
 
 	public void echoCommand() {
-		echoCommandMain();
-		echoCommandEnding();
+		if (isCorrectInput && !isEmptyTodo && !isEmptyDeadline && !isEmptyEvent) {
+			echoCommandMain();
+			echoCommandEnding();
+		}
 	}
 
 	public void printList() {
@@ -42,20 +82,31 @@ public class Task {
 	}
 
 	public void storeEvent() {
-		Event e = new Event(description, commandCount);
-		lists[commandCount] = e.storeObject(description, commandCount);
+		Event e = new Event(description);
+		lists[commandCount] = e.storeObject(description);
 		commandCount = commandCount + 1;
 	}
 
+	public boolean checkStatus(String description) {
+		if (isAction() && description.length() < 5) {
+			return true;
+		} else if (isDeadline() && (description.length() < 9 || !description.contains("/by"))) {
+			return true;
+		} else if (isEvent() && (description.length() < 6 || !description.contains("/at"))) {
+			return true;
+		}
+		return false;
+	}
+
 	public void storeTodo() {
-		Todo t = new Todo(description, commandCount);
-		lists[commandCount] = t.storeObject(description, commandCount);
+		Todo t = new Todo(description);
+		lists[commandCount] = t.storeObject(description);
 		commandCount = commandCount + 1;
 	}
 
 	public void storeDeadline() {
-		Deadline d = new Deadline(description, commandCount);
-		lists[commandCount] = d.storeObject(description, commandCount);
+		Deadline d = new Deadline(description);
+		lists[commandCount] = d.storeObject(description);
 		commandCount = commandCount + 1;
 	}
 
@@ -69,6 +120,18 @@ public class Task {
 
 	public boolean isEvent() {
 		return description.startsWith(eventKeyword);
+	}
+
+	public void printErrorMessage() {
+		if (isEmptyTodo) {
+			System.out.println("OOPS!!! The description of a todo cannot be empty.");
+		} else if (isEmptyDeadline) {
+			System.out.println("OOPS!!! The description of a deadline cannot be empty.");
+		} else if (isEmptyEvent) {
+			System.out.println("OOPS!!! The description of an event cannot be empty.");
+		} else if (isCorrectInput) {
+			System.out.println("OOPS!!! I'm sorry, but I don't know what that means :-(");
+		}
 	}
 
 	public void printListMain() {
@@ -103,7 +166,7 @@ public class Task {
 	}
 
 	public void traceTaskDone() {
-		List l = new List(description, commandCount);
+		List l = new List(description);
 		taskDone = l.traceTask(description, lists);
 		taskFinished = l.returnTaskFinished();
 		isDone = true;
