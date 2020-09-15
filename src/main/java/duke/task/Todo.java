@@ -13,5 +13,4 @@ public class Todo extends List {
         String stringReturn = "[T][" + "\u2718" + "] " + taskName;
         return stringReturn;
     }
-
 }
