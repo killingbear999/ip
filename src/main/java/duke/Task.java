@@ -33,6 +33,14 @@ public class Task {
 		this.isEmptyEvent = false;
 	}
 
+	public Task() {
+	}
+
+	public void initiateTasks() {
+		lists[commandCount] = description;
+		commandCount = commandCount + 1;
+	}
+
 	public void storeCommand() {
 		if (isDeadline()) {
 			try {
@@ -205,4 +213,13 @@ public class Task {
 		System.out.println("Nice! I've marked this task as done:");
 		System.out.println("  " + lists[taskFinished]);
 	}
+
+	public String[] returnTasks() {
+		return lists;
+	}
+
+	public int returnCount() {
+		return commandCount;
+	}
+
 }
