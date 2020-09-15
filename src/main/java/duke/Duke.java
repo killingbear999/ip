@@ -61,7 +61,7 @@ public class Duke {
     }
 
     public static void appendToFile(String filePath, String[] tasks, int commandCount) throws IOException {
-        FileWriter fw = new FileWriter(filePath, true);
+        FileWriter fw = new FileWriter(filePath);
         for (int i = 0; i < commandCount; i++) {
             fw.write(tasks[i] + "\n");
         }
