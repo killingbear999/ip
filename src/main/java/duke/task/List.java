@@ -1,5 +1,7 @@
 package duke.task;
 
+import java.util.ArrayList;
+
 public class List {
     protected String description;
     public static int taskFinished;
@@ -12,12 +14,13 @@ public class List {
         return null;
     }
 
-    public String traceTask(String description, String[] lists) {
+    public String traceTask(String description, ArrayList<String> tasks) {
         String[] taskTracers = description.split(" ");
         taskFinished = Integer.parseInt(taskTracers[1]) - 1;
-        int taskPosition = lists[taskFinished].indexOf(" ", 1) + 1;
-        int taskLength = lists[taskFinished].length();
-        String taskDone = lists[taskFinished].substring(taskPosition, taskLength);
+        String taskDone = tasks.get(taskFinished);
+        int taskPosition = taskDone.indexOf(" ", 1) + 1;
+        int taskLength = taskDone.length();
+        taskDone = taskDone.substring(taskPosition, taskLength);
         return taskDone;
     }
 
