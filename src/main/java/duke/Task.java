@@ -85,7 +85,7 @@ public class Task {
 	public void echoCommand() {
 		if (isCorrectInput && !isEmptyTodo && !isEmptyDeadline && !isEmptyEvent) {
 			echoCommandMain();
-			echoCommandEnding();
+			sumTasks();
 		}
 	}
 
@@ -102,7 +102,7 @@ public class Task {
 
 	public void storeEvent() {
 		Event e = new Event(description);
-		String eventTitle = e.storeObject(description);
+		String eventTitle = e.storeObject();
 		tasks.add(eventTitle);
 	}
 
@@ -119,13 +119,13 @@ public class Task {
 
 	public void storeTodo() {
 		Todo t = new Todo(description);
-		String todoTitle = t.storeObject(description);
+		String todoTitle = t.storeObject();
 		tasks.add(todoTitle);
 	}
 
 	public void storeDeadline() {
 		Deadline d = new Deadline(description);
-		String deadlineTitle = d.storeObject(description);
+		String deadlineTitle = d.storeObject();
 		tasks.add(deadlineTitle);
 	}
 
@@ -172,7 +172,7 @@ public class Task {
 		System.out.println("  " + tasks.get(tasks.size()-1));
 	}
 
-	public void echoCommandEnding() {
+	public void sumTasks() {
 		if (tasks.size() <= 1) {
 			System.out.println("Now you have " + tasks.size() + " task in the list.");
 		} else {
@@ -186,7 +186,7 @@ public class Task {
 
 	public void traceTaskDone() {
 		List l = new List(description);
-		taskDone = l.traceTask(description, tasks);
+		taskDone = l.traceTaskDone(tasks);
 		taskFinished = l.returnTaskFinished();
 		isDone = true;
 	}
@@ -207,5 +207,11 @@ public class Task {
 	}
 
 	public void deleteTask() {
+		List l = new List(description);
+		int taskDeleted = l.traceTaskDeleted();
+		System.out.println("Noted. I've removed this task:");
+		System.out.println("  " + tasks.get(taskDeleted));
+		tasks.remove(taskDeleted);
+		sumTasks();
 	}
 }

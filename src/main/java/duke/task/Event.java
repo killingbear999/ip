@@ -7,7 +7,7 @@ public class Event extends List {
     }
 
     @Override
-    public String storeObject(String description) {
+    public String storeObject() {
         int firstBlankSpacePosition = description.indexOf(" ", 1) + 1;
         int endingPosition = description.indexOf("/") - 1;
         int timingPosition = description.indexOf("at") + 3;

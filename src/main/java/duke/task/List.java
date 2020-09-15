@@ -5,16 +5,17 @@ import java.util.ArrayList;
 public class List {
     protected String description;
     public static int taskFinished;
+    public static int taskDeleted;
 
     public List(String description) {
         this.description = description;
     }
 
-    public String storeObject(String description) {
+    public String storeObject() {
         return null;
     }
 
-    public String traceTask(String description, ArrayList<String> tasks) {
+    public String traceTaskDone(ArrayList<String> tasks) {
         String[] taskTracers = description.split(" ");
         taskFinished = Integer.parseInt(taskTracers[1]) - 1;
         String taskDone = tasks.get(taskFinished);
@@ -26,5 +27,11 @@ public class List {
 
     public int returnTaskFinished() {
         return taskFinished;
+    }
+
+    public int traceTaskDeleted() {
+        String[] taskTracers = description.split(" ");
+        taskDeleted = Integer.parseInt(taskTracers[1]) - 1;
+        return taskDeleted;
     }
 }
