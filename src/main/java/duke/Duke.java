@@ -1,6 +1,11 @@
 package duke;
 
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class Duke {
     public static void main(String[] args) {
@@ -10,8 +15,19 @@ public class Duke {
         String listDisplayKeyword = "list";
         String statusKeyword = "done";
         String deleteKeyword = "delete";
+        String filePath = "/Users/zihaowang/Desktop/CS2113T/ip/duke.txt";
+        ArrayList<String> tasks = new ArrayList<>();
 
         Scanner userInput = new Scanner(System.in);
+
+        try {
+            readFileContents(filePath, tasks);
+        } catch (FileNotFoundException e) {
+            System.out.println("File does not exist yet");
+            System.out.println("Please proceed to enter data");
+        }
+
+        updateTasks(tasks);
 
         while (true) {
             String userCommand = userInput.nextLine();
@@ -22,6 +38,30 @@ public class Duke {
                 executeCommand(listDisplayKeyword, statusKeyword, deleteKeyword, userCommand);
             }
         }
+
+        tasks = retrieveTasks();
+
+        try {
+            writeToFile(filePath, tasks);
+        } catch (IOException e) {
+            System.out.println("Something went wrong: " + e.getMessage());
+        }
+    }
+
+    public static void readFileContents(String filePath, ArrayList<String> tasks) throws FileNotFoundException {
+        File f = new File(filePath);
+        Scanner s = new Scanner(f);
+        while (s.hasNext()) {
+            tasks.add(s.nextLine());
+        }
+    }
+
+    public static void writeToFile(String filePath, ArrayList<String> tasks) throws IOException {
+        FileWriter fw = new FileWriter(filePath);
+        for (int i = 0; i < tasks.size(); i++) {
+            fw.write(tasks.get(i) + "\n");
+        }
+        fw.close();
     }
 
     public static void executeCommand(String listDisplayKeyword, String statusKeyword, String deleteKeyword,
@@ -37,6 +77,18 @@ public class Duke {
             command.storeCommand();
             command.echoCommand();
         }
+    }
+
+    public static void updateTasks(ArrayList<String> tasks) {
+        for (int i = 0; i < tasks.size(); i++) {
+            Task taskInitiation = new Task(tasks.get(i));
+            taskInitiation.initiateTasks();
+        }
+    }
+
+    public static ArrayList<String> retrieveTasks() {
+        Task objects = new Task();
+        return objects.returnTasks();
     }
 
     public static void startChat() {

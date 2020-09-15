@@ -33,6 +33,13 @@ public class Task {
 		this.isEmptyEvent = false;
 	}
 
+	public Task() {
+	}
+
+	public void initiateTasks() {
+		tasks.add(description);
+	}
+
 	public void storeCommand() {
 		if (isDeadline()) {
 			try {
@@ -213,5 +220,9 @@ public class Task {
 		System.out.println("  " + tasks.get(taskDeleted));
 		tasks.remove(taskDeleted);
 		sumTasks();
+	}
+
+	public ArrayList<String> returnTasks() {
+		return tasks;
 	}
 }
