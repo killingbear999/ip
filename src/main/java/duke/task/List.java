@@ -1,27 +1,37 @@
 package duke.task;
 
+import java.util.ArrayList;
+
 public class List {
     protected String description;
     public static int taskFinished;
+    public static int taskDeleted;
 
     public List(String description) {
         this.description = description;
     }
 
-    public String storeObject(String description) {
+    public String storeObject() {
         return null;
     }
 
-    public String traceTask(String description, String[] lists) {
+    public String traceTaskDone(ArrayList<String> tasks) {
         String[] taskTracers = description.split(" ");
         taskFinished = Integer.parseInt(taskTracers[1]) - 1;
-        int taskPosition = lists[taskFinished].indexOf(" ", 1) + 1;
-        int taskLength = lists[taskFinished].length();
-        String taskDone = lists[taskFinished].substring(taskPosition, taskLength);
+        String taskDone = tasks.get(taskFinished);
+        int taskPosition = taskDone.indexOf(" ", 1) + 1;
+        int taskLength = taskDone.length();
+        taskDone = taskDone.substring(taskPosition, taskLength);
         return taskDone;
     }
 
     public int returnTaskFinished() {
         return taskFinished;
+    }
+
+    public int traceTaskDeleted() {
+        String[] taskTracers = description.split(" ");
+        taskDeleted = Integer.parseInt(taskTracers[1]) - 1;
+        return taskDeleted;
     }
 }

@@ -9,6 +9,7 @@ public class Duke {
         String exitKeyword = "bye";
         String listDisplayKeyword = "list";
         String statusKeyword = "done";
+        String deleteKeyword = "delete";
 
         Scanner userInput = new Scanner(System.in);
 
@@ -18,17 +19,20 @@ public class Duke {
                 exitChat();
                 break;
             } else {
-                executeCommand(listDisplayKeyword, statusKeyword, userCommand);
+                executeCommand(listDisplayKeyword, statusKeyword, deleteKeyword, userCommand);
             }
         }
     }
 
-    public static void executeCommand(String listDisplayKeyword, String statusKeyword, String userCommand) {
+    public static void executeCommand(String listDisplayKeyword, String statusKeyword, String deleteKeyword,
+                                      String userCommand) {
         Task command = new Task(userCommand);
         if (userCommand.equals(listDisplayKeyword)) {
             command.printList();
         } else if (userCommand.startsWith(statusKeyword)) {
             command.markAsDone();
+        } else if (userCommand.startsWith(deleteKeyword)) {
+            command.deleteTask();
         } else {
             command.storeCommand();
             command.echoCommand();

@@ -7,7 +7,7 @@ public class Todo extends List {
     }
 
     @Override
-    public String storeObject(String description) {
+    public String storeObject() {
         int toDoPosition = description.indexOf(" ", 1) + 1;
         String taskName = description.substring(toDoPosition);
         String stringReturn = "[T][" + "\u2718" + "] " + taskName;

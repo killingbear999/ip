@@ -7,6 +7,7 @@ import duke.task.Deadline;
 import duke.task.Event;
 import duke.task.List;
 import duke.task.Todo;
+import java.util.ArrayList;
 
 public class Task {
 	protected String description;
@@ -15,14 +16,13 @@ public class Task {
 	protected boolean isEmptyTodo;
 	protected boolean isEmptyDeadline;
 	protected boolean isEmptyEvent;
-	public static final int MAX_STRING_SIZE = 100;
-	public static String[] lists = new String[MAX_STRING_SIZE];
-	private static int commandCount = 0;
 	private static int taskFinished = 0;
 	private static String taskDone;
 	protected String deadlineKeyword = "deadline";
 	protected String actionKeyword = "todo";
 	protected String eventKeyword = "event";
+
+	public static ArrayList<String> tasks = new ArrayList<>();
 
 	public Task(String description) {
 		this.description = description;
@@ -85,7 +85,7 @@ public class Task {
 	public void echoCommand() {
 		if (isCorrectInput && !isEmptyTodo && !isEmptyDeadline && !isEmptyEvent) {
 			echoCommandMain();
-			echoCommandEnding();
+			sumTasks();
 		}
 	}
 
@@ -102,8 +102,8 @@ public class Task {
 
 	public void storeEvent() {
 		Event e = new Event(description);
-		lists[commandCount] = e.storeObject(description);
-		commandCount = commandCount + 1;
+		String eventTitle = e.storeObject();
+		tasks.add(eventTitle);
 	}
 
 	public boolean checkStatus(String description) {
@@ -119,14 +119,14 @@ public class Task {
 
 	public void storeTodo() {
 		Todo t = new Todo(description);
-		lists[commandCount] = t.storeObject(description);
-		commandCount = commandCount + 1;
+		String todoTitle = t.storeObject();
+		tasks.add(todoTitle);
 	}
 
 	public void storeDeadline() {
 		Deadline d = new Deadline(description);
-		lists[commandCount] = d.storeObject(description);
-		commandCount = commandCount + 1;
+		String deadlineTitle = d.storeObject();
+		tasks.add(deadlineTitle);
 	}
 
 	public boolean isDeadline() {
@@ -154,13 +154,13 @@ public class Task {
 	}
 
 	public void printListMain() {
-		for (int i = 1; i <= commandCount; i++) {
-			System.out.println(i + "." + lists[i - 1]);
+		for (int i = 1; i <= tasks.size(); i++) {
+			System.out.println(i + "." + tasks.get(i - 1));
 		}
 	}
 
 	public void printListHeading() {
-		if (commandCount<=1) {
+		if (tasks.size() <= 1) {
 			System.out.println("Here are the task in your list:");
 		} else {
 			System.out.println("Here are the tasks in your list:");
@@ -169,14 +169,14 @@ public class Task {
 
 	public void echoCommandMain() {
 		System.out.println("Got it. I've added this task:");
-		System.out.println("  " + lists[commandCount-1]);
+		System.out.println("  " + tasks.get(tasks.size()-1));
 	}
 
-	public void echoCommandEnding() {
-		if (commandCount<=1) {
-			System.out.println("Now you have " + commandCount + " task in the list.");
+	public void sumTasks() {
+		if (tasks.size() <= 1) {
+			System.out.println("Now you have " + tasks.size() + " task in the list.");
 		} else {
-			System.out.println("Now you have " + commandCount + " tasks in the list.");
+			System.out.println("Now you have " + tasks.size() + " tasks in the list.");
 		}
 	}
 
@@ -186,23 +186,32 @@ public class Task {
 
 	public void traceTaskDone() {
 		List l = new List(description);
-		taskDone = l.traceTask(description, lists);
+		taskDone = l.traceTaskDone(tasks);
 		taskFinished = l.returnTaskFinished();
 		isDone = true;
 	}
 
 	public void finishTask(String taskDone, int taskFinished) {
-		if (lists[taskFinished].contains("[T]")) {
-			lists[taskFinished] = "[T][" + getStatusIcon() + "] " + taskDone;
-		} else if (lists[taskFinished].contains("[D]")) {
-			lists[taskFinished] = "[D][" + getStatusIcon() + "] " + taskDone;
-		} else if (lists[taskFinished].contains("[E]")) {
-			lists[taskFinished] = "[E][" + getStatusIcon() + "] " + taskDone;
+		if (tasks.get(taskFinished).contains("[T]")) {
+			tasks.set(taskFinished, "[T][" + getStatusIcon() + "] " + taskDone);
+		} else if (tasks.get(taskFinished).contains("[D]")) {
+			tasks.set(taskFinished, "[D][" + getStatusIcon() + "] " + taskDone);
+		} else if (tasks.get(taskFinished).contains("[E]")) {
+			tasks.set(taskFinished, "[E][" + getStatusIcon() + "] " + taskDone);
 		}
 	}
 
 	public void printTaskDone() {
 		System.out.println("Nice! I've marked this task as done:");
-		System.out.println("  " + lists[taskFinished]);
+		System.out.println("  " + tasks.get(taskFinished));
+	}
+
+	public void deleteTask() {
+		List l = new List(description);
+		int taskDeleted = l.traceTaskDeleted();
+		System.out.println("Noted. I've removed this task:");
+		System.out.println("  " + tasks.get(taskDeleted));
+		tasks.remove(taskDeleted);
+		sumTasks();
 	}
 }
