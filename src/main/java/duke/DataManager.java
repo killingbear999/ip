@@ -5,11 +5,11 @@ import duke.exception.EventException;
 import duke.exception.TodoException;
 import duke.task.Deadline;
 import duke.task.Event;
-import duke.task.List;
+import duke.task.Task;
 import duke.task.Todo;
 import java.util.ArrayList;
 
-public class Task {
+public class DataManager {
 	protected String description;
 	protected boolean isDone;
 	protected boolean isCorrectInput;
@@ -24,7 +24,7 @@ public class Task {
 
 	public static ArrayList<String> tasks = new ArrayList<>();
 
-	public Task(String description) {
+	public DataManager(String description) {
 		this.description = description;
 		this.isDone = false;
 		this.isCorrectInput = true;
@@ -33,7 +33,7 @@ public class Task {
 		this.isEmptyEvent = false;
 	}
 
-	public Task() {
+	public DataManager() {
 	}
 
 	public void initiateTasks() {
@@ -192,7 +192,7 @@ public class Task {
 	}
 
 	public void traceTaskDone() {
-		List l = new List(description);
+		Task l = new Task(description);
 		taskDone = l.traceTaskDone(tasks);
 		taskFinished = l.returnTaskFinished();
 		isDone = true;
@@ -214,7 +214,7 @@ public class Task {
 	}
 
 	public void deleteTask() {
-		List l = new List(description);
+		Task l = new Task(description);
 		int taskDeleted = l.traceTaskDeleted();
 		System.out.println("Noted. I've removed this task:");
 		System.out.println("  " + tasks.get(taskDeleted));

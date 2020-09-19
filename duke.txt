@@ -1,3 +1,1 @@
-[T][✓] hello
-[D][✓] goo home (by: monday)
-[T][✓] go home 
+[E][✘] CS2113 lecture (at: Friday 18 September 2020 from 4pm to 6pm)

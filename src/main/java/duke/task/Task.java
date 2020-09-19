@@ -2,12 +2,12 @@ package duke.task;
 
 import java.util.ArrayList;
 
-public class List {
+public class Task {
     protected String description;
     public static int taskFinished;
     public static int taskDeleted;
 
-    public List(String description) {
+    public Task(String description) {
         this.description = description;
     }
 

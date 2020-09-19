@@ -66,7 +66,7 @@ public class Duke {
 
     public static void executeCommand(String listDisplayKeyword, String statusKeyword, String deleteKeyword,
                                       String userCommand) {
-        Task command = new Task(userCommand);
+        DataManager command = new DataManager(userCommand);
         if (userCommand.equals(listDisplayKeyword)) {
             command.printList();
         } else if (userCommand.startsWith(statusKeyword)) {
@@ -81,13 +81,13 @@ public class Duke {
 
     public static void updateTasks(ArrayList<String> tasks) {
         for (int i = 0; i < tasks.size(); i++) {
-            Task taskInitiation = new Task(tasks.get(i));
+            DataManager taskInitiation = new DataManager(tasks.get(i));
             taskInitiation.initiateTasks();
         }
     }
 
     public static ArrayList<String> retrieveTasks() {
-        Task objects = new Task();
+        DataManager objects = new DataManager();
         return objects.returnTasks();
     }
 

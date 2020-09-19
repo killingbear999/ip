@@ -1,6 +1,6 @@
 package duke.task;
 
-public class Event extends List {
+public class Event extends Task {
 
     public Event(String description) {
         super(description);
