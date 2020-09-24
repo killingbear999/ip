@@ -55,10 +55,24 @@ public class Ui {
         if (tasks.size() == 0) {
             System.out.println("The list is empty.");
         } else if (tasks.size() == 1) {
-            System.out.println("Here are the task in your list:");
+            System.out.println("Here is the task in your list:");
             System.out.println("1." + tasks.get(0));
         } else {
             System.out.println("Here are the tasks in your list:");
+            for (int i = 1; i <= tasks.size(); i++) {
+                System.out.println(i + "." + tasks.get(i - 1));
+            }
+        }
+    }
+    
+    public void printMatchingList(ArrayList<String> tasks) {
+        if (tasks.size() == 0) {
+            System.out.println("The list is empty.");
+        } else if (tasks.size() == 1) {
+            System.out.println("Here is the matching task in your list:");
+            System.out.println("1." + tasks.get(0));
+        } else {
+            System.out.println("Here are the matching tasks in your list:");
             for (int i = 1; i <= tasks.size(); i++) {
                 System.out.println(i + "." + tasks.get(i - 1));
             }
@@ -95,6 +109,14 @@ public class Ui {
         } else {
             System.out.println("Now you have " + tasks.size() + " tasks in the list.");
         }
+    }
+    
+    public void printEmptyFindCommand() {
+        System.out.println("OOPS!!! The description of a find cannot be empty.");
+    }
+    
+    public void printEmptyMatchingList() {
+        System.out.println("No matching result is found.");
     }
 
     public void printDateNotExistsMessage() {

@@ -41,4 +41,9 @@ public class Task {
         taskDeleted = Integer.parseInt(taskTracers[1]) - 1;
         return taskDeleted;
     }
+    
+    public String traceTask() {
+        String[] taskTracers = description.split(" ");
+        return taskTracers[1];
+    }
 }

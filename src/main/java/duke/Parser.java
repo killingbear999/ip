@@ -17,8 +17,10 @@ public class Parser {
             command.markAsDone();
         } else if (userCommand.startsWith("delete")) {
             command.deleteTask();
-        } else if (userCommand.startsWith("date")) {
+        } else if (userCommand.startsWith("find")) {
             command.findTask();
+        } else if (userCommand.startsWith("date")) {
+            command.findDate();
         } else {
             command.storeCommand();
         }
