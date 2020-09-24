@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/** This class is to read data from the local disk and write new data to the local disk */
 public class Storage {
     Ui ui = new Ui();
     ArrayList<String> tasks = new ArrayList<>();

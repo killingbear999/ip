@@ -6,6 +6,10 @@ import duke.command.FinishCommand;
 
 import java.util.ArrayList;
 
+/**
+ * This class is to deal with the operations like storing tasks, marking existing tasks as done,
+ * printing all current tasks in the list, deleting tasks
+ */
 public class TaskList {
 	protected String description;
 

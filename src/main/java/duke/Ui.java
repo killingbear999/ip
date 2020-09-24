@@ -3,6 +3,7 @@ package duke;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/** This class is to deal with interactions with the user */
 public class Ui {
     public Ui() {
     }

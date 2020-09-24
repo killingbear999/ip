@@ -1,5 +1,6 @@
 package duke;
 
+/** This class is to deal with making senseof the user command */
 public class Parser {
     private String userCommand;
 

@@ -5,6 +5,7 @@ import duke.task.Task;
 
 import java.util.ArrayList;
 
+/** This class is to handle the commmand type done */
 public class FinishCommand extends Command {
     private static int taskFinished = 0;
     private static String taskDone;

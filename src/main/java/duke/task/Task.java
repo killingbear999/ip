@@ -2,6 +2,7 @@ package duke.task;
 
 import java.util.ArrayList;
 
+/** This class is to handle command types such as deadline, event, todo, done and delete */
 public class Task {
     protected String description;
     public static int taskFinished;

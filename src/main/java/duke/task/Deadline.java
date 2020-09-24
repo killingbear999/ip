@@ -1,5 +1,6 @@
 package duke.task;
 
+/** This class is to extract the main body of a specific deadline */
 public class Deadline extends Task {
 
     public Deadline(String description) {

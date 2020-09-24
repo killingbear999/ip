@@ -1,5 +1,6 @@
 package duke.task;
 
+/** This class is to extract the main body of a specific todo */
 public class Todo extends Task {
 
     public Todo(String description) {

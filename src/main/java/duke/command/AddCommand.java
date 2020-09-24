@@ -10,6 +10,10 @@ import duke.task.Todo;
 
 import java.util.ArrayList;
 
+/**
+ * This class is to add new tasks into the list, with the command type event, todo and deadline,
+ * and echo the task
+ */
 public class AddCommand extends Command {
     public AddCommand(String description, ArrayList<String> tasks) {
         super(description, tasks);

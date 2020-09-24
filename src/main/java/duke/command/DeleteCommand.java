@@ -5,6 +5,7 @@ import duke.task.Task;
 
 import java.util.ArrayList;
 
+/** This class is to handle the command type delete */
 public class DeleteCommand extends Command {
     public DeleteCommand(String description, ArrayList<String> tasks) {
         super(description, tasks);
