@@ -6,6 +6,7 @@ import duke.task.Task;
 
 import java.util.ArrayList;
 
+/** This class is to handle the commmand type done */
 public class FinishCommand extends Command {
     private static int taskFinished = 0;
     private static String taskDone;
@@ -14,6 +15,7 @@ public class FinishCommand extends Command {
         super(description, tasks);
     }
 
+    /** It is to process the command if the command type is "done" */
     public void markAsFinished() {
         Ui ui = new Ui();
         try {
@@ -26,10 +28,12 @@ public class FinishCommand extends Command {
         }
     }
 
+    /** It is get the status of done (i.e. tick) and not done (i.e. cross) */
     public String getStatusIcon() {
         return (isDone ? "\u2713" : "\u2718");
     }
-
+    
+    /** It is to trace the main body of the task that is marked as done by the user */
     public void traceTaskDone() throws DoneException {
         if (description.length() <= 4) {
             throw new DoneException();
@@ -49,6 +53,7 @@ public class FinishCommand extends Command {
         taskDone = taskDone.substring(taskPosition, taskLength);
     }
 
+    /** It is to update the status of the task that is done to the list */
     public void finishTask(String taskDone, int taskFinished) {
         if (tasks.get(taskFinished).contains("[T]")) {
             tasks.set(taskFinished, "[T][" + getStatusIcon() + "] " + taskDone);

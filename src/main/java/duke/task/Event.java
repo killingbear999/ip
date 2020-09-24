@@ -3,12 +3,14 @@ package duke.task;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+/** This class is to extract the main body of a specific event */
 public class Event extends Task {
 
     public Event(String description) {
         super(description);
     }
 
+    /** It is to return the main body of the event before it is written to the list */
     @Override
     public String storeObject() {
         int firstBlankSpacePosition = description.indexOf(" ", 1) + 1;
