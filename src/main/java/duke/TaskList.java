@@ -2,7 +2,7 @@ package duke;
 
 import duke.command.AddCommand;
 import duke.command.DeleteCommand;
-import duke.command.FindCommand;
+import duke.command.FindDateCommand;
 import duke.command.FinishCommand;
 
 import java.util.ArrayList;
@@ -45,7 +45,7 @@ public class TaskList {
 	}
 
 	public void findTask() {
-		FindCommand task = new FindCommand(description, tasks);
+		FindDateCommand task = new FindDateCommand(description, tasks);
 		task.findTask();
 	}
 

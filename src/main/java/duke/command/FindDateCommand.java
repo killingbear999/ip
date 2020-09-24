@@ -5,10 +5,10 @@ import duke.exception.DateException;
 
 import java.util.ArrayList;
 
-public class FindCommand extends Command {
+public class FindDateCommand extends Command {
     private String date;
 
-    public FindCommand(String description, ArrayList<String> tasks) {
+    public FindDateCommand(String description, ArrayList<String> tasks) {
         super(description, tasks);
     }
 
