@@ -1,6 +1,7 @@
 package duke.command;
 
 import duke.Ui;
+import duke.exception.DoneException;
 import duke.task.Task;
 
 import java.util.ArrayList;
@@ -17,22 +18,39 @@ public class FinishCommand extends Command {
     /** It is to process the command if the command type is "done" */
     public void markAsFinished() {
         Ui ui = new Ui();
-        traceTaskDone();
-        finishTask(taskDone, taskFinished);
-        ui.printTaskDone(tasks, taskFinished);
+        try {
+            traceTaskDone();
+            checkValidTask();
+            finishTask(taskDone, taskFinished);
+            ui.printTaskDone(tasks, taskFinished);
+        } catch (DoneException e) {
+            ui.printTaskNotFoundMessage();
+        }
     }
 
     /** It is get the status of done (i.e. tick) and not done (i.e. cross) */
     public String getStatusIcon() {
         return (isDone ? "\u2713" : "\u2718");
     }
-
+    
     /** It is to trace the main body of the task that is marked as done by the user */
-    public void traceTaskDone() {
+    public void traceTaskDone() throws DoneException {
+        if (description.length() <= 4) {
+            throw new DoneException();
+        }
         Task task = new Task(description);
-        taskDone = task.traceTaskDone(tasks);
-        taskFinished = task.returnTaskFinished();
+        taskFinished = task.traceTaskDone();
         isDone = true;
+    }
+    
+    public void checkValidTask() throws DoneException {
+        if (taskFinished >= tasks.size()) {
+            throw new DoneException();
+        }
+        taskDone = tasks.get(taskFinished);
+        int taskPosition = taskDone.indexOf(" ", 1) + 1;
+        int taskLength = taskDone.length();
+        taskDone = taskDone.substring(taskPosition, taskLength);
     }
 
     /** It is to update the status of the task that is done to the list */

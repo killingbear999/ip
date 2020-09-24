@@ -2,6 +2,7 @@ package duke;
 
 import duke.command.AddCommand;
 import duke.command.DeleteCommand;
+import duke.command.FindDateCommand;
 import duke.command.FinishCommand;
 
 import java.util.ArrayList;
@@ -51,7 +52,12 @@ public class TaskList {
 		DeleteCommand task = new DeleteCommand(description, tasks);
 		task.removeTask();
 	}
-
+	
+	public void findTask() {
+		FindDateCommand task = new FindDateCommand(description, tasks);
+		task.findTask();
+	}
+	
 	/** It is to return all tasks in the list and ready them to be written into local disk */
 	public ArrayList<String> returnTasks() {
 		return tasks;
