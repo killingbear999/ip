@@ -99,12 +99,24 @@ public class Ui {
             System.out.println("Now you have " + tasks.size() + " tasks in the list.");
         }
     }
-
+    
     public void printEmptyFindCommand() {
         System.out.println("OOPS!!! The description of a find cannot be empty.");
     }
     
     public void printEmptyMatchingList() {
         System.out.println("No matching result is found.");
+    }
+
+    public void printDateNotExistsMessage() {
+        System.out.println("Task is not found. Please try another date");
+    }
+
+    public void printTaskOnTheDate(String taskOnTheDate) {
+        System.out.println(taskOnTheDate);
+    }
+    
+    public void printTaskNotFoundMessage() {
+        System.out.println("Task is not found. Please re-enter a new task number.");
     }
 }

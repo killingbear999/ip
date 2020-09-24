@@ -25,7 +25,7 @@ public class FindCommand extends Command {
         }
         Ui ui = new Ui();
         Task task = new Task(description);
-        String object = task.traceTask(tasks);
+        String object = task.traceTask();
         ArrayList<String> TasksFound = new ArrayList<>();
     
         for (String currentTask : tasks) {
