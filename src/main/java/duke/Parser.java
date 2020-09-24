@@ -15,6 +15,8 @@ public class Parser {
             command.markAsDone();
         } else if (userCommand.startsWith("delete")) {
             command.deleteTask();
+        } else if (userCommand.startsWith("find")) {
+            command.findTask();
         } else {
             command.storeCommand();
         }

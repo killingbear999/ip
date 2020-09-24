@@ -2,6 +2,7 @@ package duke;
 
 import duke.command.AddCommand;
 import duke.command.DeleteCommand;
+import duke.command.FindCommand;
 import duke.command.FinishCommand;
 
 import java.util.ArrayList;
@@ -41,6 +42,11 @@ public class TaskList {
 	public void deleteTask() {
 		DeleteCommand task = new DeleteCommand(description, tasks);
 		task.removeTask();
+	}
+	
+	public void findTask() {
+		FindCommand task = new FindCommand(description, tasks);
+		task.locateTask();
 	}
 
 	public ArrayList<String> returnTasks() {
