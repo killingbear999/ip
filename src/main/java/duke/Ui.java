@@ -32,7 +32,7 @@ public class Ui {
     }
 
     public void printErrorMessage(boolean isEmptyTodo, boolean isEmptyDeadline, boolean isEmptyEvent,
-                                  boolean isCorrectInput) {
+            boolean isCorrectInput) {
         if (isEmptyTodo) {
             System.out.println("OOPS!!! The description of a todo cannot be empty.");
         } else if (isEmptyDeadline) {
@@ -84,5 +84,17 @@ public class Ui {
         } else {
             System.out.println("Now you have " + tasks.size() + " tasks in the list.");
         }
+    }
+
+    public void printDateNotExistsMessage() {
+        System.out.println("Task is not found. Please try another date");
+    }
+
+    public void printTaskOnTheDate(String taskOnTheDate) {
+        System.out.println(taskOnTheDate);
+    }
+    
+    public void printTaskNotFoundMessage() {
+        System.out.println("Task is not found. Please re-enter a new task number.");
     }
 }

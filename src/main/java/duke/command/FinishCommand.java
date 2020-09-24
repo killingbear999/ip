@@ -1,7 +1,7 @@
 package duke.command;
 
 import duke.Ui;
-import duke.command.Command;
+import duke.exception.DoneException;
 import duke.task.Task;
 
 import java.util.ArrayList;
@@ -16,20 +16,37 @@ public class FinishCommand extends Command {
 
     public void markAsFinished() {
         Ui ui = new Ui();
-        traceTaskDone();
-        finishTask(taskDone, taskFinished);
-        ui.printTaskDone(tasks, taskFinished);
+        try {
+            traceTaskDone();
+            checkValidTask();
+            finishTask(taskDone, taskFinished);
+            ui.printTaskDone(tasks, taskFinished);
+        } catch (DoneException e) {
+            ui.printTaskNotFoundMessage();
+        }
     }
 
     public String getStatusIcon() {
         return (isDone ? "\u2713" : "\u2718");
     }
 
-    public void traceTaskDone() {
+    public void traceTaskDone() throws DoneException {
+        if (description.length() <= 4) {
+            throw new DoneException();
+        }
         Task task = new Task(description);
-        taskDone = task.traceTaskDone(tasks);
-        taskFinished = task.returnTaskFinished();
+        taskFinished = task.traceTaskDone();
         isDone = true;
+    }
+    
+    public void checkValidTask() throws DoneException {
+        if (taskFinished >= tasks.size()) {
+            throw new DoneException();
+        }
+        taskDone = tasks.get(taskFinished);
+        int taskPosition = taskDone.indexOf(" ", 1) + 1;
+        int taskLength = taskDone.length();
+        taskDone = taskDone.substring(taskPosition, taskLength);
     }
 
     public void finishTask(String taskDone, int taskFinished) {
