@@ -15,6 +15,11 @@ import java.util.ArrayList;
  * and echo the task
  */
 public class AddCommand extends Command {
+    
+    public static final int EMPTY_TODO = 5;
+    public static final int EMPTY_DEADLINE = 9;
+    public static final int EMPTY_EVENT = 6;
+    
     public AddCommand(String description, ArrayList<String> tasks) {
         super(description, tasks);
     }
@@ -66,11 +71,11 @@ public class AddCommand extends Command {
 
     /** It is to check whether the command is valid or not */
     public boolean isValidCommand(String description) {
-        if (isTodo() && description.length() < 5) {
+        if (isTodo() && description.length() < EMPTY_TODO) {
             return true;
-        } else if (isDeadline() && (description.length() < 9 || !description.contains("/by"))) {
+        } else if (isDeadline() && (description.length() < EMPTY_DEADLINE || !description.contains("/by"))) {
             return true;
-        } else if (isEvent() && (description.length() < 6 || !description.contains("/at"))) {
+        } else if (isEvent() && (description.length() < EMPTY_EVENT || !description.contains("/at"))) {
             return true;
         }
         return false;

@@ -8,6 +8,9 @@ import java.util.ArrayList;
 
 /** This class is to handle the command type delete */
 public class DeleteCommand extends Command {
+    
+    public static final int EMPTY_DELETION = 6;
+    
     public DeleteCommand(String description, ArrayList<String> tasks) {
         super(description, tasks);
     }
@@ -22,10 +25,11 @@ public class DeleteCommand extends Command {
         }
     }
     
+    /** It is to delete a specific task if the format of the command type delete is correct */
     public void deleteTask() throws DeleteException {
         Ui ui = new Ui();
         Task task = new Task(description);
-        if (description.length() <= 6) {
+        if (description.length() <= EMPTY_DELETION) {
             throw new DeleteException();
         }
         int taskDeleted = task.traceTaskDeleted();

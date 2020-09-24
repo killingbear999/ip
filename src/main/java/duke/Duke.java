@@ -27,9 +27,8 @@ public class Duke {
                 break;
             } else {
                 parser.executeCommand();
+                storage.updateFile();
             }
         }
-
-        storage.updateFile();
     }
 }

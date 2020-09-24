@@ -54,11 +54,13 @@ public class TaskList {
 		task.removeTask();
 	}
 	
+	/** It is to find a task which contains some specific words */
 	public void findTask() {
 		FindCommand task = new FindCommand(description, tasks);
 		task.locateTask();
 	}
 
+	/** It is to find a task on a specific date */
 	public void findDate() {
 		FindDateCommand task = new FindDateCommand(description, tasks);
 		task.findTask();

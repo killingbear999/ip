@@ -5,7 +5,10 @@ import java.time.format.DateTimeFormatter;
 
 /** This class is to extract the main body of a specific event */
 public class Event extends Task {
-
+    
+    public static final int WHITESPACE_MANAGEMENT = 1;
+    public static final int WHITESPACE_WORDS_MANAGEMENT = 3;
+    
     public Event(String description) {
         super(description);
     }
@@ -13,9 +16,9 @@ public class Event extends Task {
     /** It is to return the main body of the event before it is written to the list */
     @Override
     public String storeObject() {
-        int firstBlankSpacePosition = description.indexOf(" ", 1) + 1;
-        int endingPosition = description.indexOf("/") - 1;
-        int timingPosition = description.indexOf("at") + 3;
+        int firstBlankSpacePosition = description.indexOf(" ", 1) + WHITESPACE_MANAGEMENT;
+        int endingPosition = description.indexOf("/") - WHITESPACE_MANAGEMENT;
+        int timingPosition = description.indexOf("at") + WHITESPACE_WORDS_MANAGEMENT;
         String taskName = description.substring(firstBlankSpacePosition, endingPosition);
         String eventTime = description.substring(timingPosition);
         if (eventTime.contains("-")) {

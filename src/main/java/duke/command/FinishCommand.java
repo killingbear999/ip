@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 /** This class is to handle the commmand type done */
 public class FinishCommand extends Command {
+    public static final int WHITESPACE_MANAGEMENT = 1;
     private static int taskFinished = 0;
     private static String taskDone;
 
@@ -43,12 +44,13 @@ public class FinishCommand extends Command {
         isDone = true;
     }
     
+    /** It is to extract the main body of the task done if the format for command type done is correct */
     public void checkValidTask() throws DoneException {
         if (taskFinished >= tasks.size()) {
             throw new DoneException();
         }
         taskDone = tasks.get(taskFinished);
-        int taskPosition = taskDone.indexOf(" ", 1) + 1;
+        int taskPosition = taskDone.indexOf(" ", 1) + WHITESPACE_MANAGEMENT;
         int taskLength = taskDone.length();
         taskDone = taskDone.substring(taskPosition, taskLength);
     }

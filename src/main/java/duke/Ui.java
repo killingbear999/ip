@@ -65,6 +65,7 @@ public class Ui {
         }
     }
     
+    /** It is to print all tasks in the matching list for the command type find */
     public void printMatchingList(ArrayList<String> tasks) {
         if (tasks.size() == 0) {
             System.out.println("The list is empty.");
@@ -111,22 +112,27 @@ public class Ui {
         }
     }
     
+    /** It is to print the error message if the find is empty */
     public void printEmptyFindCommand() {
         System.out.println("OOPS!!! The description of a find cannot be empty.");
     }
     
+    /** It is to print the message if no matching result is found */
     public void printEmptyMatchingList() {
         System.out.println("No matching result is found.");
     }
 
+    /** It is to print the message if the date is not found in the list */
     public void printDateNotExistsMessage() {
         System.out.println("Task is not found. Please try another date");
     }
 
+    /** It is to print the task on the specific date */
     public void printTaskOnTheDate(String taskOnTheDate) {
         System.out.println(taskOnTheDate);
     }
     
+    /** It is to print the error message if the task is not found for done/delete command type */
     public void printTaskNotFoundMessage() {
         System.out.println("Task is not found. Please re-enter a new task number.");
     }
