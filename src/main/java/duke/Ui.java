@@ -7,6 +7,7 @@ public class Ui {
     public Ui() {
     }
 
+    /** It is to show welcome messages to greet the user */
     public void showWelcomeMessages() {
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
@@ -18,19 +19,23 @@ public class Ui {
         System.out.println("What can I do for you?");
     }
 
+    /** It is to show goodbye message before exiting Duke */
     public void showGoodByeMessage() {
         System.out.println("Bye. Hope to see you again soon!");
     }
-
+    
+    /** It is to show the error messages that file does not exit */
     public void showFileNotExistMessages() {
         System.out.println("File does not exist yet");
         System.out.println("Please proceed to enter data");
     }
 
+    /** It is to show the error message that the file is not writeable for some reasons */
     public void showFileNotWriteableMessage(IOException e) {
         System.out.println("Something went wrong: " + e.getMessage());
     }
 
+    /** It is to show error messages that input command is in incorrect format */
     public void printErrorMessage(boolean isEmptyTodo, boolean isEmptyDeadline, boolean isEmptyEvent,
                                   boolean isCorrectInput) {
         if (isEmptyTodo) {
@@ -44,6 +49,7 @@ public class Ui {
         }
     }
 
+    /** It is to print the list to show all tasks that are currently in the list */
     public void printList(ArrayList<String> tasks) {
         if (tasks.size() == 0) {
             System.out.println("The list is empty.");
@@ -58,6 +64,7 @@ public class Ui {
         }
     }
 
+    /** It is to echo command after user has input a new command */
     public void echoCommand(ArrayList<String> tasks) {
         System.out.println("Got it. I've added this task:");
         System.out.println("  " + tasks.get(tasks.size()-1));
@@ -68,16 +75,19 @@ public class Ui {
         }
     }
 
+    /** It is to print the task that is finished if command "done" is used */
     public void printTaskDone(ArrayList<String> tasks, int taskFinished) {
         System.out.println("Nice! I've marked this task as done:");
         System.out.println("  " + tasks.get(taskFinished));
     }
 
+    /** It is to print the task that is deleted if command "delete" is used */
     public void printTaskRemoved(ArrayList<String> tasks, int taskDeleted) {
         System.out.println("Noted. I've removed this task:");
         System.out.println("  " + tasks.get(taskDeleted));
     }
 
+    /** It is to print the total number of tasks that are currently in the list */
     public void printSum(ArrayList<String> tasks) {
         if (tasks.size() <= 1) {
             System.out.println("Now you have " + tasks.size() + " task in the list.");

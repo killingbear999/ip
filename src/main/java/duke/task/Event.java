@@ -6,6 +6,7 @@ public class Event extends Task {
         super(description);
     }
 
+    /** It is to return the main body of the event before it is written to the list */
     @Override
     public String storeObject() {
         int firstBlankSpacePosition = description.indexOf(" ", 1) + 1;

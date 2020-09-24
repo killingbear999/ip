@@ -7,6 +7,7 @@ public class Parser {
         this.userCommand = userCommand;
     }
 
+    /** It is to execute command such as "list", "done", "delete" and store the input command */
     public void executeCommand() {
         TaskList command = new TaskList(userCommand);
         if (userCommand.equals("list")) {
@@ -20,6 +21,7 @@ public class Parser {
         }
     }
 
+    /** It is to exit the chatbot after the command "bye" is input */
     public boolean shouldExit() {
         boolean isExit = false;
         if (userCommand.equals("bye")) {

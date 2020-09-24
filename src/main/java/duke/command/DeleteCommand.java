@@ -1,7 +1,6 @@
 package duke.command;
 
 import duke.Ui;
-import duke.command.Command;
 import duke.task.Task;
 
 import java.util.ArrayList;
@@ -11,6 +10,7 @@ public class DeleteCommand extends Command {
         super(description, tasks);
     }
 
+    /** It is to delete a specific task identified by the user */
     public void removeTask() {
         Ui ui = new Ui();
         Task task = new Task(description);

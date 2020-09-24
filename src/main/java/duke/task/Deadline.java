@@ -5,7 +5,8 @@ public class Deadline extends Task {
     public Deadline(String description) {
         super(description);
     }
-
+    
+    /** It is to return the main body of the deadline before it is written to the list */
     @Override
     public String storeObject() {
         int firstBlankSpacePosition = description.indexOf(" ", 1) + 1;

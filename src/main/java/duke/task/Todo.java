@@ -6,6 +6,7 @@ public class Todo extends Task {
         super(description);
     }
 
+    /** It is to return the main body of the todo before it is written to the list */
     @Override
     public String storeObject() {
         int toDoPosition = description.indexOf(" ", 1) + 1;

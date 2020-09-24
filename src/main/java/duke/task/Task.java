@@ -15,6 +15,7 @@ public class Task {
         return null;
     }
 
+    /** It is to identify the main body of the task that is marked as done by the user */
     public String traceTaskDone(ArrayList<String> tasks) {
         String[] taskTracers = description.split(" ");
         taskFinished = Integer.parseInt(taskTracers[1]) - 1;
@@ -24,11 +25,13 @@ public class Task {
         taskDone = taskDone.substring(taskPosition, taskLength);
         return taskDone;
     }
-
+    
+    /** It is to return the int number of the position/ranking of the task done in the list */
     public int returnTaskFinished() {
         return taskFinished;
     }
-
+    
+    /** It is to identify the int number of the position/ranking of the task that is deleted in the list */
     public int traceTaskDeleted() {
         String[] taskTracers = description.split(" ");
         taskDeleted = Integer.parseInt(taskTracers[1]) - 1;
