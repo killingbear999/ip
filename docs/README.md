@@ -15,6 +15,7 @@
 
 ### 1. Introduction
 Duke is a desktop chatbot, optimised for use via a Command Line Interface (CLI). This application aims to help user store tasks and trace the status of tasks.
+
 ### 2. Quick Start
 1. Ensure you have Java 11 or above installed in your Computer
 2. Download the latest ip.jar from Github: https://github.com/killingbear999/ip.
@@ -22,6 +23,7 @@ Duke is a desktop chatbot, optimised for use via a Command Line Interface (CLI).
 4. Type the command in the command box and press Enter to execute it.  
    E.g. Typing `list` and pressing Enter for Duke to display all current tasks on the list.
 5. Refer to the Features below for details of each command.
+
 ### 3. Features
 1. Adding todo: `todo`
    1. User can add a task of a 'todo' type into the list.
@@ -59,6 +61,7 @@ Duke is a desktop chatbot, optimised for use via a Command Line Interface (CLI).
    1. User can exit Duke by typing 'bye' and Duke will automatically update current tasks to the local disk
    2. Format: bye
    3. Example: bye
+
 ### 4. Command Summary
 ACTION | FORMAT & EXAMPLE
 -------|--------------------------------------------------------------
