@@ -1,4 +1,5 @@
 # USER GUIDE
+
 1. Introduction
 2. Quick Start
 3. Features
@@ -14,9 +15,11 @@
 4. Command Summary
 
 ### 1. Introduction
+
 Duke is a desktop chatbot, optimised for use via a Command Line Interface (CLI). This application aims to help user store tasks and trace the status of tasks.
 
 ### 2. Quick Start
+
 1. Ensure you have Java 11 or above installed in your Computer
 2. Download the latest ip.jar from Github: https://github.com/killingbear999/ip.
 3. Copy the file to the folder you want to use as the home folder.
@@ -25,6 +28,7 @@ Duke is a desktop chatbot, optimised for use via a Command Line Interface (CLI).
 5. Refer to the Features below for details of each command.
 
 ### 3. Features
+
 1. Adding todo: `todo`
    1. User can add a task of a 'todo' type into the list.
    2. Format: todo [-d DESCRIPTION]
@@ -63,8 +67,9 @@ Duke is a desktop chatbot, optimised for use via a Command Line Interface (CLI).
    3. Example: bye
 
 ### 4. Command Summary
+
 ACTION | FORMAT & EXAMPLE
--------|--------------------------------------------------------------
+--------------------------------|--------------------------------------------------------------
 todo | todo [-d DESCRIPTION]  (e.g. todo borrow book)
 deadline | deadline [-d DESCRIPTION] /by [-t timing] OR deadline [-d DESCRIPTION] /by [-d yyyy-mm-dd] (e.g. deadline borrow books /by Sunday 6pm OR deadline borrow books /by 2020-07-21)
 event |  event [-d DESCRIPTION] /at [-t timing] OR event [-d DESCRIPTION] /at [-d yyyy-mm-dd] (e.g. event borrow books /at Sunday 5-6pm OR event borrow books /at 2020-07-21)
