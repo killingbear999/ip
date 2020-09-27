@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Duke {
     /** It is the main function that will run the chatbot Duke from greeting to goodbye */
     public static void main(String[] args) {
-        String filePath = "../ip/duke.txt";
+        String filePath = "../duke.txt";
         boolean isExit;
 
         Ui ui = new Ui();
