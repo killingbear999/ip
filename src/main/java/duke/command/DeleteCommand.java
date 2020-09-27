@@ -25,7 +25,10 @@ public class DeleteCommand extends Command {
         }
     }
     
-    /** It is to delete a specific task if the format of the command type delete is correct */
+    /** It is to delete a specific task if the format of the command type delete is correct
+     *
+     * @throws DeleteException If delete is empty or the item to be deleted does not exist
+     */
     public void deleteTask() throws DeleteException {
         Ui ui = new Ui();
         Task task = new Task(description);

@@ -9,7 +9,12 @@ public class Todo extends Task {
         super(description);
     }
 
-    /** It is to return the main body of the todo before it is written to the list */
+    /** It is to return the main body of the todo before it is written to the list
+     *
+     * @param todoPosition The starting position of the main content of todo
+     * @param taskName The main content of todo
+     * @return The string containing the task and its status
+     */
     @Override
     public String storeObject() {
         int toDoPosition = description.indexOf(" ", 1) + WHITESPACE_MANAGEMENT;

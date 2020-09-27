@@ -21,7 +21,11 @@ public class FindCommand extends Command {
         }
     }
     
-    /** It is to trace the specific task if the format for the command type find is correct */
+    /** It is to trace the specific task if the format for the command type find is correct
+     *
+     * @param object The keyword that will be used to search and identify the specific task
+     * @throws FindException If find is empty of the task to be found does not exist
+     */
     public void findTask() throws FindException {
         if (description.length() <= 4) {
             throw new FindException();

@@ -34,7 +34,12 @@ public class FinishCommand extends Command {
         return (isDone ? "\u2713" : "\u2718");
     }
     
-    /** It is to trace the main body of the task that is marked as done by the user */
+    /** It is to trace the main body of the task that is marked as done by the user
+     *
+     * @param taskFinished The sequence of the task, which is marked as done, in the list
+     * @param isDone True if the task is marked as done
+     * @throws DoneException If done is entered in incorrect format
+     */
     public void traceTaskDone() throws DoneException {
         if (description.length() <= 4) {
             throw new DoneException();
@@ -44,7 +49,14 @@ public class FinishCommand extends Command {
         isDone = true;
     }
     
-    /** It is to extract the main body of the task done if the format for command type done is correct */
+    /** It is to extract the main body of the task done if the format for command type done is correct
+     *
+     * @param taskFinished The sequence of the task, which is marked as done, in the list
+     * @param taskDone The main content of the task that is marked as done
+     * @param taskPosition The starting position of the main body of the task
+     * @param taskLength The length of the task
+     * @throws DoneException If the task to be marked as done does not exist
+     */
     public void checkValidTask() throws DoneException {
         if (taskFinished >= tasks.size()) {
             throw new DoneException();

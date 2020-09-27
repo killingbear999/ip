@@ -13,7 +13,15 @@ public class Deadline extends Task {
         super(description);
     }
     
-    /** It is to return the main body of the deadline before it is written to the list */
+    /** It is to return the main body of the deadline before it is written to the list
+     *
+     * @param firstBlankSpacePosition The starting position of the first blank space
+     * @param endingPosition The starting position of the character '/'
+     * @param deadlinePosition The starting position of the deadline
+     * @param taskName The main content of the task
+     * @param deadline The main content of the deadline
+     * @return The string containing the task and deadline and its status
+     */
     @Override
     public String storeObject() {
         int firstBlankSpacePosition = description.indexOf(" ", 1) + WHITESPACE_MANAGEMENT;

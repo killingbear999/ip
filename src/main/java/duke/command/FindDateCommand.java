@@ -14,7 +14,11 @@ public class FindDateCommand extends Command {
         super(description, tasks);
     }
 
-    /** It is to find the task on the specific date */
+    /** It is to find the task on the specific date
+     *
+     * @param dataPosition The starting position of the main content from the command entered by the user
+     * @param date The specific date that the user would like to search for
+     */
     public void findTask() {
         Ui ui = new Ui();
         int datePosition = description.indexOf(" ", 1) + WHITESPACE_MANAGEMENT;
@@ -26,7 +30,13 @@ public class FindDateCommand extends Command {
         }
     }
 
-    /** It is to find the task on the specific date if the format for the command type date is correct */
+    /** It is to find the task on the specific date if the format for the command type date is correct
+     *
+     * @param hasTask True if there are tasks on the date
+     * @param taskOnTheDate The main content of the task on the date
+     * @param currentTask The current task on the list while searching through the list
+     * @throws DateException If no task found on the date or date entered is in incorrect format
+     */
     public void locateTask() throws DateException {
         Ui ui = new Ui();
         boolean hasTask = false;

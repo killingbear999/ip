@@ -13,7 +13,15 @@ public class Event extends Task {
         super(description);
     }
 
-    /** It is to return the main body of the event before it is written to the list */
+    /** It is to return the main body of the event before it is written to the list
+     *
+     * @param firstBlankSpacePosition The starting position of the first blank space
+     * @param endingPosition The starting position of the character '/'
+     * @param timingPosition The starting position of the event timing
+     * @param taskName The main content of the task
+     * @param eventTime The main content of the event timing
+     * @return The string containing the task and event timing and its status
+     */
     @Override
     public String storeObject() {
         int firstBlankSpacePosition = description.indexOf(" ", 1) + WHITESPACE_MANAGEMENT;

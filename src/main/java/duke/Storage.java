@@ -26,7 +26,10 @@ public class Storage {
         }
     }
 
-    /** It is to read the data from the local disk if the file exists */
+    /** It is to read the data from the local disk if the file exists
+     *
+     * @throws FileNotFoundException If file has not been created
+     */
     public void readFileContents() throws FileNotFoundException {
         File f = new File(filePath);
         Scanner s = new Scanner(f);
@@ -58,7 +61,10 @@ public class Storage {
         }
     }
 
-    /** It is to write new data to the local disk if the file is writeable */
+    /** It is to write new data to the local disk if the file is writeable
+     *
+     * @throws IOException If file is not writeable for some reasons
+     */
     public void writeToFile() throws IOException {
         tasks = retrieveTasks();
         FileWriter fw = new FileWriter(filePath);

@@ -2,7 +2,13 @@ package duke;
 
 import java.util.Scanner;
 
-/** This class is the main class that will run the chatbot Duke */
+/**
+ * The Duke program is a desktop chatbot, opitimisd for use via a Command Line Interface.
+ *
+ * @author Wang Zihao
+ * @version v0.2
+ * @since 2020-09-28
+ */
 public class Duke {
     /** It is the main function that will run the chatbot Duke from greeting to goodbye */
     public static void main(String[] args) {

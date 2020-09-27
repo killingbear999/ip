@@ -26,7 +26,11 @@ public class Parser {
         }
     }
 
-    /** It is to exit the chatbot after the command "bye" is input */
+    /** It is to exit the chatbot after the command "bye" is input
+     *
+     * @param isExit True if "bye" is entered by the user
+     * @return isExit time to exit the chatbot
+     */
     public boolean shouldExit() {
         boolean isExit = false;
         if (userCommand.equals("bye")) {

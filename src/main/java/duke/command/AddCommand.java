@@ -68,7 +68,7 @@ public class AddCommand extends Command {
     public boolean isEvent() {
         return description.startsWith("event");
     }
-
+    
     /** It is to check whether the command is valid or not */
     public boolean isValidCommand(String description) {
         if (isTodo() && description.length() < EMPTY_TODO) {
@@ -81,7 +81,10 @@ public class AddCommand extends Command {
         return false;
     }
 
-    /** It is to process the command if it is event type */
+    /** It is to process the command if it is event type
+     *
+     * @throws EventException If event is not entered in the correct format
+     */
     public void dealWithEvent() throws EventException {
         isEmptyEvent = isValidCommand(description);
         if (isEmptyEvent) {
@@ -90,7 +93,10 @@ public class AddCommand extends Command {
         storeEvent();
     }
 
-    /** It is to process the command if it is deadline type */
+    /** It is to process the command if it is deadline type
+     *
+     * @throws DeadlineException If deadline is not entered in the correct format
+     */
     public void dealWithDeadline() throws DeadlineException {
         isEmptyDeadline = isValidCommand(description);
         if (isEmptyDeadline) {
@@ -99,7 +105,10 @@ public class AddCommand extends Command {
         storeDeadline();
     }
 
-    /** It is to process the command if it is todo type */
+    /** It is to process the command if it is todo type
+     *
+     * @throws TodoException If todo is not entered in the correct format
+     */
     public void dealWithTodo() throws TodoException {
         isEmptyTodo = isValidCommand(description);
         if (isEmptyTodo) {
@@ -108,21 +117,30 @@ public class AddCommand extends Command {
         storeTodo();
     }
 
-    /** It is to store an event if the format is correct */
+    /** It is to store an event if the format is correct
+     *
+     * @param eventTitle The main content of the new event
+     */
     public void storeEvent() {
         Event e = new Event(description);
         String eventTitle = e.storeObject();
         tasks.add(eventTitle);
     }
 
-    /** It is to store a todo if the format is correct */
+    /** It is to store a todo if the format is correct
+     *
+     * @param todoTitle The main content of the new todo
+     */
     public void storeTodo() {
         Todo t = new Todo(description);
         String todoTitle = t.storeObject();
         tasks.add(todoTitle);
     }
 
-    /** It is to store a deadline if the format is correct */
+    /** It is to store a deadline if the format is correct
+     *
+     * @param deadlineTitle The main content of the new deadline
+     */
     public void storeDeadline() {
         Deadline d = new Deadline(description);
         String deadlineTitle = d.storeObject();
