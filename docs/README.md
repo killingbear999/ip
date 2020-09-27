@@ -24,7 +24,7 @@ Duke is a desktop chatbot, optimised for use via a Command Line Interface (CLI).
 2. Download the latest ip.jar from Github: https://github.com/killingbear999/ip.
 3. Copy the file to the folder you want to use as the home folder.
 4. Type the command in the command box and press Enter to execute it.  
-   E.g. Typing `list` and pressing Enter for Duke to display all current tasks on the list.
+   E.g. Typing 'list' and pressing Enter for Duke to display all current tasks on the list.
 5. Refer to the Features below for details of each command.
 
 ### 3. Features
@@ -43,7 +43,7 @@ Duke is a desktop chatbot, optimised for use via a Command Line Interface (CLI).
    3. Examples: event borrow books /at Sunday 5-6pm OR event borrow books /at 2020-07-21
 4. Viewing current tasks: `list`
    1. User can view current tasks on the list as well as their corresponding status.
-   2. Format: `list`
+   2. Format: list
    3. Example: list
 5. Viewing tasks on a specific date: `date`
    1. User can view current tasks on a specific date if available
