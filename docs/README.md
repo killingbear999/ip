@@ -31,15 +31,15 @@ Duke is a desktop chatbot, optimised for use via a Command Line Interface (CLI).
 
 1. Adding todo: `todo`
    1. User can add a task of a 'todo' type into the list.
-   2. Format: todo [-d DESCRIPTION]
+   2. Format: todo [DESCRIPTION]
    3. Example: todo borrow book
 2. Adding deadline: `deadline`
    1. User can add a task of a 'deadline' type into the list.
-   2. Format: deadline [-d DESCRIPTION] /by [-t timing] OR deadline [-d DESCRIPTION] /by [-d yyyy-mm-dd]
+   2. Format: deadline [DESCRIPTION] /by [timing] OR deadline [DESCRIPTION] /by [yyyy-mm-dd]
    3. Examples: deadline borrow books /by Sunday 6pm OR deadline borrow books /by 2020-07-21
 3. Adding event: `event`
    1. User can add a task of a 'event' type into the list.
-   2. Format: event [-d DESCRIPTION] /at [-t timing] OR event [-d DESCRIPTION] /at [-d yyyy-mm-dd]
+   2. Format: event [DESCRIPTION] /at [timing] OR event [DESCRIPTION] /at [yyyy-mm-dd]
    3. Examples: event borrow books /at Sunday 5-6pm OR event borrow books /at 2020-07-21
 4. Viewing current tasks: `list`
    1. User can view current tasks on the list as well as their corresponding status.
@@ -47,19 +47,19 @@ Duke is a desktop chatbot, optimised for use via a Command Line Interface (CLI).
    3. Example: list
 5. Viewing tasks on a specific date: `date`
    1. User can view current tasks on a specific date if available
-   2. Format: date [-d MON DAY YEAR]
+   2. Format: date [MON DAY YEAR]
    3. Example: date Jul 21 2020
 6. Marking a task as done: `done`
    1. User can change the status of a specific task by marking it as done.
-   2. Format: done [-n NUMBER]
+   2. Format: done [NUMBER]
    3. Example: done 1
 7. Deleting a task: `delete`
    1. User can delete a specific task from the list
-   2. Format: delete [-n NUMBER]
+   2. Format: delete [NUMBER]
    3. Example: delete 1
 8. Finding a task containing specific words: `find`
    1. User can find a task by searching a keyword
-   2. Format: find [-d DESCRIPTION]
+   2. Format: find [DESCRIPTION]
    3. Example: find book
 9. Exiting the chatbot: `bye`
    1. User can exit Duke by typing 'bye' and Duke will automatically update current tasks to the local disk
@@ -70,12 +70,12 @@ Duke is a desktop chatbot, optimised for use via a Command Line Interface (CLI).
 
 ACTION | FORMAT & EXAMPLE
 --------------------------------|--------------------------------------------------------------
-todo | todo [-d DESCRIPTION]  (e.g. todo borrow book)
-deadline | deadline [-d DESCRIPTION] /by [-t timing] OR deadline [-d DESCRIPTION] /by [-d yyyy-mm-dd] (e.g. deadline borrow books /by Sunday 6pm OR deadline borrow books /by 2020-07-21)
-event |  event [-d DESCRIPTION] /at [-t timing] OR event [-d DESCRIPTION] /at [-d yyyy-mm-dd] (e.g. event borrow books /at Sunday 5-6pm OR event borrow books /at 2020-07-21)
+todo | todo [DESCRIPTION]  (e.g. todo borrow book)
+deadline | deadline [DESCRIPTION] /by [timing] OR deadline [DESCRIPTION] /by [yyyy-mm-dd] (e.g. deadline borrow books /by Sunday 6pm OR deadline borrow books /by 2020-07-21)
+event |  event [DESCRIPTION] /at [timing] OR event [DESCRIPTION] /at [yyyy-mm-dd] (e.g. event borrow books /at Sunday 5-6pm OR event borrow books /at 2020-07-21)
 list | list
-date | date [-d MON DAY YEAR] (e.g. date Jul 21 2020)
-done | done [-n NUMBER] (e.g. done 1)
-delete | delete [-n NUMBER] (e.g. delete 1)
-find | find [-d DESCRIPTION] (e.g. find book)
+date | date [MON DAY YEAR] (e.g. date Jul 21 2020)
+done | done [NUMBER] (e.g. done 1)
+delete | delete [NUMBER] (e.g. delete 1)
+find | find [DESCRIPTION] (e.g. find book)
 bye | bye
